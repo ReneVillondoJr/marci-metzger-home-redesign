@@ -7,33 +7,33 @@ import type {
 export const contactInfo: ContactInfo = {
   sectionHeading: 'CALL OR VISIT',
 
-  businessName: 'Desert View Hospital',
+  businessName: 'Marci Metzger - THE RIDGE REALTY GROUP',
 
-  address: '360 S Lola Ln, Pahrump, NV 89048, United States',
+  address: '3190 HW-160, Suite F, Pahrump, Nevada 89048, United States',
 
-  phoneLabel: '(775) 751-7500',
-  phoneHref: 'tel:7757517500',
+  phoneLabel: '(206) 919-6886',
+  phoneHref: 'tel:2069196886',
 
   officeHours: {
-    label: 'Open 24 hours',
-    hours: '24 hours',
-    note: 'Emergency services are available 24 hours a day.',
+    label: 'Open today',
+    hours: '08:00 am – 07:00 pm',
+    note: 'Open daily 8:00 am - 7:00 pm. Appointments outside office hours available upon request. Just call!',
   },
 
   mapCenter: {
-    lat: 36.2073,
-    lng: -115.9831,
+    lat: 36.2081,
+    lng: -115.9839,
   },
 
   directionsHref:
-    'https://www.google.com/maps/search/?api=1&query=Desert+View+Hospital%2C+360+S+Lola+Ln%2C+Pahrump%2C+NV+89048',
+    'https://www.google.com/maps/search/?api=1&query=Marci+Metzger+THE+RIDGE+REALTY+GROUP%2C+3190+HW-160+Suite+F%2C+Pahrump%2C+NV+89048',
 
   mapEmbedUrl:
-    'https://www.google.com/maps?q=Desert+View+Hospital%2C+360+S+Lola+Ln%2C+Pahrump%2C+NV+89048&output=embed',
+    'https://www.google.com/maps?q=Marci+Metzger+THE+RIDGE+REALTY+GROUP%2C+3190+HW-160+Suite+F%2C+Pahrump%2C+NV+89048&output=embed',
 };
 
 export const footerData: FooterData = {
-  copyright: `Copyright © ${new Date().getFullYear()} Desert View Hospital — All Rights Reserved`,
+  copyright: `Copyright © ${new Date().getFullYear()} Marci Metzger - THE RIDGE REALTY GROUP — All Rights Reserved`,
 };
 
 export const cookieBannerData: CookieBannerData = {

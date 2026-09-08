@@ -24,8 +24,9 @@ export function ContactSection() {
       <div className='mx-auto max-w-6xl px-6'>
         {/* Main Heading */}
         <div className='mx-auto max-w-2xl text-center'>
-          <h2 className='text-3xl tracking-tight text-[#9A7650] md:text-4xl'>
-            {contactInfo.sectionHeading}
+          <h2 className='font-serif text-2xl font-light uppercase tracking-[0.08em] text-[#222222] sm:text-3xl md:text-3xl'>
+            {' '}
+            {contactInfo.sectionHeading}{' '}
           </h2>
         </div>
 
@@ -101,13 +102,15 @@ export function ContactSection() {
               </div>
 
               {/* Submit */}
-              <Button
-                type='submit'
-                disabled={isSubmitting}
-                className='bg-gray-200 px-10 text-black hover:bg-gray-300'
-              >
-                {isSubmitting ? 'Sending…' : 'SEND'}
-              </Button>
+              <div className='flex justify-center'>
+                <Button
+                  type='submit'
+                  disabled={isSubmitting}
+                  className='bg-gray-200 px-10 text-black hover:bg-gray-300'
+                >
+                  {isSubmitting ? 'Sending…' : 'SEND'}
+                </Button>
+              </div>
 
               <p className='text-xs leading-5 text-black/40'>
                 This site is protected by reCAPTCHA and the Google Privacy
@@ -122,10 +125,6 @@ export function ContactSection() {
               <p className='text-sm font-medium uppercase tracking-[0.2em] text-gray-400'>
                 Contact
               </p>
-
-              <h3 className='mt-3 text-2xl font-semibold text-gray-400'>
-                Call or Visit
-              </h3>
 
               <div className='mt-8 space-y-7'>
                 {/* Business */}
@@ -176,17 +175,6 @@ export function ContactSection() {
                     {contactInfo.officeHours.note}
                   </p>
                 </div>
-
-                {/* Directions */}
-                <a
-                  href={contactInfo.directionsHref}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-200 px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-gray-300'
-                >
-                  <Navigation className='size-4' />
-                  Get Directions
-                </a>
               </div>
             </div>
           </div>

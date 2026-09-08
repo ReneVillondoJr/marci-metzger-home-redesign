@@ -36,17 +36,15 @@ export function PhotoGallerySection() {
     };
   }, [api]);
 
-  // Automatically change image every 5 seconds
+  // Slow automatic slideshow
   useEffect(() => {
     if (!api) return;
 
     const interval = setInterval(() => {
       api.scrollNext();
-    }, 5000);
+    }, 7000);
 
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, [api]);
 
   if (galleryImages.length === 0) {
@@ -54,35 +52,56 @@ export function PhotoGallerySection() {
   }
 
   return (
-    <section className='bg-black py-16 text-white'>
-      <div className='mx-auto max-w-6xl px-6'>
-        {/* Heading */}
-        <h2 className='text-center font-heading text-2xl font-semibold tracking-tight md:text-3xl'>
-          {galleryHeading}
-        </h2>
+    <section className='bg-[#111111] py-20 text-white md:py-24'>
+      {' '}
+      <div className='mx-auto max-w-7xl px-5 sm:px-6 lg:px-8'>
+        {/* Section Heading */}
+        <div className='mb-10 text-center md:mb-12'>
+          <p className='mb-3 text-[10px] font-medium uppercase tracking-[0.3em] text-white/45'>
+            Gallery
+          </p>
 
-        {/* Main Image */}
-        <div className='relative mt-8'>
+          <h2 className='font-heading text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl'>
+            {galleryHeading}
+          </h2>
+
+          <div className='mx-auto mt-5 h-px w-14 bg-white/30' />
+        </div>
+
+        {/* Main Gallery */}
+        <div className='group relative'>
           <Carousel
             setApi={setApi}
             opts={{
               align: 'start',
               loop: true,
+              duration: 60,
             }}
             className='w-full'
           >
             <CarouselContent>
               {galleryImages.map((item) => (
                 <CarouselItem key={item.id} className='basis-full'>
-                  <div className='relative overflow-hidden'>
+                  <div className='relative aspect-[16/8.5] overflow-hidden bg-black sm:aspect-[16/8] md:aspect-[16/7.5]'>
                     <Image
                       src={item.image}
                       alt={item.alt}
-                      width={1200}
-                      height={650}
-                      className='aspect-[2/1] w-full object-cover'
+                      fill
+                      sizes='(max-width: 768px) 100vw, 1200px'
+                      className='object-cover transition-transform duration-[7000ms] ease-out group-hover:scale-[1.015]'
                       priority
                     />
+
+                    {/* Bottom gradient */}
+                    <div className='pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/45 to-transparent' />
+
+                    {/* Image number */}
+                    <div className='absolute bottom-4 left-4 sm:bottom-6 sm:left-6'>
+                      <span className='text-[10px] font-medium uppercase tracking-[0.2em] text-white/70'>
+                        {String(activeIndex + 1).padStart(2, '0')} /{' '}
+                        {String(galleryImages.length).padStart(2, '0')}
+                      </span>
+                    </div>
                   </div>
                 </CarouselItem>
               ))}
@@ -90,52 +109,137 @@ export function PhotoGallerySection() {
 
             {/* Previous */}
             <CarouselPrevious
-              className='left-4 h-10 w-10 border-white/30 bg-black/70 text-white hover:bg-black hover:text-white'
+              className='
+            left-3
+            h-9
+            w-9
+            border-white/20
+            bg-black/35
+            text-white
+            opacity-0
+            backdrop-blur-md
+            transition-all
+            duration-300
+            hover:border-white/50
+            hover:bg-black/60
+            hover:text-white
+            group-hover:opacity-100
+            sm:left-5
+            sm:h-11
+            sm:w-11
+          '
               aria-label='Previous photo'
             >
-              <ChevronLeft className='size-5' />
+              <ChevronLeft className='size-4 sm:size-5' />
             </CarouselPrevious>
 
             {/* Next */}
             <CarouselNext
-              className='right-4 h-10 w-10 border-white/30 bg-black/70 text-white hover:bg-black hover:text-white'
+              className='
+            right-3
+            h-9
+            w-9
+            border-white/20
+            bg-black/35
+            text-white
+            opacity-0
+            backdrop-blur-md
+            transition-all
+            duration-300
+            hover:border-white/50
+            hover:bg-black/60
+            hover:text-white
+            group-hover:opacity-100
+            sm:right-5
+            sm:h-11
+            sm:w-11
+          '
               aria-label='Next photo'
             >
-              <ChevronRight className='size-5' />
+              <ChevronRight className='size-4 sm:size-5' />
             </CarouselNext>
           </Carousel>
         </div>
 
-        {/* Smaller Thumbnails */}
-        <div className='mt-4 flex'>
-          <div className='flex max-w-full gap-2 overflow-x-auto pb-2'>
-            {galleryImages.map((item, index) => (
-              <button
-                key={item.id}
-                type='button'
-                onClick={() => api?.scrollTo(index)}
-                aria-label={`View photo ${index + 1}`}
-                aria-current={activeIndex === index}
-                className={`group relative h-16 w-20 shrink-0 overflow-hidden rounded-md border transition-all duration-300 sm:h-18 sm:w-24 md:h-20 md:w-28 ${
-                  activeIndex === index ?
-                    'border-white opacity-100'
-                  : 'border-white/20 opacity-60 hover:border-white/60 hover:opacity-100'
-                }`}
-              >
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  sizes='112px'
-                  className='object-cover transition-transform duration-300 group-hover:scale-105'
-                />
+        {/* Thumbnails */}
+        <div className='mt-5'>
+          <div
+            className='
+          flex
+          gap-2.5
+          overflow-x-auto
+          pb-2
+          scrollbar-thin
+          scrollbar-track-transparent
+          scrollbar-thumb-white/15
+        '
+          >
+            {galleryImages.map((item, index) => {
+              const isActive = activeIndex === index;
 
-                {/* Active thumbnail */}
-                {activeIndex === index && (
-                  <span className='absolute inset-0 border-2 border-white' />
-                )}
-              </button>
-            ))}
+              return (
+                <button
+                  key={item.id}
+                  type='button'
+                  onClick={() => api?.scrollTo(index)}
+                  aria-label={`View photo ${index + 1}`}
+                  aria-current={isActive}
+                  className={`
+                group
+                relative
+                h-14
+                w-20
+                shrink-0
+                overflow-hidden
+                rounded-sm
+                border
+                bg-black
+                transition-all
+                duration-500
+                sm:h-16
+                sm:w-24
+                md:h-[68px]
+                md:w-28
+                ${
+                  isActive ?
+                    'border-white opacity-100'
+                  : 'border-white/10 opacity-45 hover:border-white/40 hover:opacity-80'
+                }
+              `}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes='112px'
+                    className='
+                  object-cover
+                  transition-transform
+                  duration-700
+                  ease-out
+                  group-hover:scale-105
+                '
+                  />
+
+                  {/* Thumbnail overlay */}
+                  <span
+                    className={`
+                  absolute inset-0 transition-colors duration-500
+                  ${
+                    isActive ? 'bg-transparent' : (
+                      'bg-black/20 group-hover:bg-transparent'
+                    )
+                  }
+                `}
+                  />
+
+                  {/* Active indicator */}
+                  {isActive && (
+                    <span className='absolute inset-x-0 bottom-0 h-0.5 bg-white' />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
