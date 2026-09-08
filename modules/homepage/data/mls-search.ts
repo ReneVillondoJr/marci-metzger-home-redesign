@@ -37,8 +37,5 @@ export const mlsSearchConfig: MlsSearchFormConfig = {
   submitLabel: 'Search Now',
 };
 
-// The original site's Location and Type dropdowns are populated dynamically
-// from the MLS provider at runtime and had no static options in the markup.
-// Replace these with real values from whatever listings source you wire up.
 export const locationOptions: { value: string; label: string }[] = [];
 export const propertyTypeOptions: { value: string; label: string }[] = [];

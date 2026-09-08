@@ -13,7 +13,6 @@ export function PartnerLogosSection() {
             alt={logo.alt}
             width={100}
             height={100}
-            className='h-16 w-auto object-contain grayscale transition-all hover:grayscale-0'
           />
         ))}
       </div>

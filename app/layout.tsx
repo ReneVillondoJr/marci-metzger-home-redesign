@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Cinzel, Source_Sans_3 } from 'next/font/google';
 
+import { SiteFooter } from '@/components/SiteFooter';
+import { SiteHeader } from '@/components/SiteHeader';
+
 import './globals.css';
 
 const sourceSans = Source_Sans_3({
@@ -18,9 +21,9 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: 'Marci Metzger | Real Estate',
+  title: 'Marci Metzger | The Ridge Realty Group',
   description:
-    'Marci Metzger - Real estate services, property listings, and homes for sale.',
+    'Marci Metzger - The Ridge Realty Group. Real estate services, property listings, and homes for sale in Pahrump, Nevada.',
 };
 
 export default function RootLayout({
@@ -30,7 +33,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={`${sourceSans.variable} ${cinzel.variable}`}>
-      <body>{children}</body>
+      <body className='bg-white font-sans text-[#222222] antialiased'>
+        <SiteHeader />
+
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

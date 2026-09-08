@@ -3,26 +3,22 @@ import type { GalleryImage, PartnerLogo } from '@/modules/homepage/types/home';
 export const partnerLogos: PartnerLogo[] = [
   {
     id: 'big-circle',
-    image:
-      'https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/BIG%20CIRCLE%202.png',
+    image: '/about/big-circle.webp',
     alt: 'The Ridge Realty Group logo',
   },
   {
     id: 'equal-housing',
-    image:
-      'https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/Equal%20Housing%20Logo.png',
+    image: '/about/equal-housing.webp',
     alt: 'Equal Housing Opportunity logo',
   },
   {
     id: 'realtor-pin',
-    image:
-      'https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/Realtor%20Pin.jpg',
+    image: '/about/realtor-pin.webp',
     alt: 'National Association of Realtors logo',
   },
   {
     id: 'chamber',
-    image:
-      'https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/Chamber.jpg',
+    image: '/about/chamber.webp',
     alt: 'Pahrump Chamber of Commerce logo',
   },
 ];

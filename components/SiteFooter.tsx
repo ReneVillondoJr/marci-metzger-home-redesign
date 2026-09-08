@@ -1,6 +1,6 @@
 import { footerData } from '@/modules/homepage/data/contact';
 
-import { FooterSocialLinks } from './FooterSocialLinks';
+import { FooterSocialLinks } from '@/modules/homepage/components/FooterSocialLinks';
 
 export function SiteFooter() {
   return (

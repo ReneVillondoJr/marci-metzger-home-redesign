@@ -2,8 +2,7 @@ import type { AgentIntro, StatCard } from '@/modules/homepage/types/home';
 
 export const agentIntro: AgentIntro = {
   sectionHeading: 'Marci Metzger',
-  photo:
-    'https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg',
+  photo: '/about/marci-metzger.webp',
   photoAlt: 'Marci Metzger, Pahrump real estate agent',
   headline: 'Realtor for Nearly 3 Decades',
   phoneLabel: '(206) 919-6886',
@@ -15,7 +14,7 @@ export const getItSoldHeading = 'GET IT SOLD';
 export const statCards: StatCard[] = [
   {
     id: 'top-sales',
-    image: 'https://img1.wsimg.com/isteam/stock/3395/',
+    image: '/get-it-sold-1.webp',
     imageAlt: 'Pahrump neighborhood street view',
     heading: 'Top Residential Sales, Last 5 Years',
     body: [
@@ -25,7 +24,7 @@ export const statCards: StatCard[] = [
   },
   {
     id: 'dont-just-list',
-    image: 'https://img1.wsimg.com/isteam/stock/107927/',
+    image: '/get-it-sold-2.webp',
     imageAlt: 'For sale sign in front of a home',
     heading: "Don't Just List It",
     body: [
@@ -34,7 +33,7 @@ export const statCards: StatCard[] = [
   },
   {
     id: 'guide-to-buyers',
-    image: 'https://img1.wsimg.com/isteam/stock/771/',
+    image: '/get-it-sold-3.webp',
     imageAlt: 'Couple reviewing paperwork with a real estate agent',
     heading: 'Guide to Buyers',
     body: [

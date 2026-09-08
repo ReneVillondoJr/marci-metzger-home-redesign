@@ -8,5 +8,4 @@ export const navLinks: NavLink[] = [
 ];
 
 export const brandName = 'Marci Metzger';
-export const logoImage =
-  'https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/blob-6c0c2e0.png';
+export const logoImage = '/marci-metzger-logo.webp';

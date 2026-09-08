@@ -7,42 +7,63 @@ import {
 
 export function ServicesSection() {
   return (
-    <section className='bg-muted/40 py-16'>
+    <section className='bg-[#F5F4F0] py-16 md:py-20'>
       <div className='mx-auto max-w-6xl px-6'>
-        <h2 className='text-center text-2xl font-semibold tracking-tight'>
-          {servicesHeading}
-        </h2>
+        {/* Section Heading */}
+        <div className='text-center'>
+          <h2 className='font-serif text-2xl font-light uppercase tracking-[0.08em] text-[#222222] sm:text-3xl md:text-3xl'>
+            {servicesHeading}
+          </h2>
 
-        <div className='mt-10 grid gap-10 md:grid-cols-3'>
-          {serviceCards.map((card) => (
+          <div className='mx-auto mt-3 h-px w-12 bg-[#252522]/30' />
+        </div>
+
+        {/* Services */}
+        <div className='mt-12 grid gap-14 md:grid-cols-3 md:gap-8 lg:mt-14 lg:gap-12'>
+          {serviceCards.map((card, index) => (
             <article
               key={card.id}
-              className='flex flex-col items-center gap-4 text-center'
+              className='group flex flex-col items-center text-center'
             >
+              {/* Number */}
+              <span className='mb-4 text-xs font-medium tracking-[0.25em] text-[#252522]/40'>
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
               {/* Circular Image */}
-              <div className='relative h-55 w-55 overflow-hidden rounded-full'>
-                <Image
-                  src={card.image}
-                  alt={card.imageAlt}
-                  fill
-                  sizes='220px'
-                  className='object-cover'
-                />
+              <div className='relative h-52 w-52 overflow-hidden rounded-full border border-[#252522]/10 bg-white p-1 transition-all duration-500 group-hover:border-[#252522]/30 sm:h-56 sm:w-56'>
+                <div className='relative h-full w-full overflow-hidden rounded-full'>
+                  <Image
+                    src={card.image}
+                    alt={card.imageAlt}
+                    fill
+                    sizes='224px'
+                    className='object-cover transition-transform duration-700 group-hover:scale-105'
+                  />
+                </div>
               </div>
 
-              {/* Title */}
-              <div>
-                <h3 className='text-base font-semibold'>{card.heading}</h3>
+              {/* Content */}
+              <div className='mt-6 max-w-sm'>
+                <h3 className='font-heading text-lg font-semibold tracking-tight text-[#252522] md:text-xl'>
+                  {card.heading}
+                </h3>
 
-                <p className='text-sm text-muted-foreground'>
-                  {card.subheading}
+                {/* Small Divider */}
+                <div className='mx-auto mt-3 h-px w-8 bg-[#252522]/25 transition-all duration-300 group-hover:w-12' />
+
+                {/* Subheading */}
+                {card.subheading && (
+                  <p className='mt-3 text-sm font-medium text-[#252522]/60'>
+                    {card.subheading}
+                  </p>
+                )}
+
+                {/* Description */}
+                <p className='mt-4 text-sm leading-7 text-[#252522]/65'>
+                  {card.body}
                 </p>
               </div>
-
-              {/* Description */}
-              <p className='text-sm leading-relaxed text-muted-foreground'>
-                {card.body}
-              </p>
             </article>
           ))}
         </div>
