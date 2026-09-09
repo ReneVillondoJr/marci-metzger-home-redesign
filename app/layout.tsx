@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Cinzel, Source_Sans_3 } from 'next/font/google';
 
-import { SiteFooter } from '@/components/SiteFooter';
-import { SiteHeader } from '@/components/SiteHeader';
+import { SiteFooter } from '@/components/layout/SiteFooter';
+import { SiteHeader } from '@/components/layout/SiteHeader';
 
 import './globals.css';
 

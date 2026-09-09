@@ -2,6 +2,8 @@
 
 import { Navigation, Phone, MapPin } from 'lucide-react';
 
+import { SectionHeading } from '@/components/layout/SectionHeading';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -10,7 +12,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { contactInfo } from '@/modules/homepage/data/contact';
 import { useContactForm } from '@/modules/homepage/hooks/use-contact-form';
 
-export function ContactSection() {
+type ContactSectionProps = {
+  title?: string;
+};
+
+export function ContactSection({
+  title = contactInfo.sectionHeading,
+}: ContactSectionProps) {
   const { form, errors, isSubmitting, isSubmitted, updateField, submitForm } =
     useContactForm();
 
@@ -20,32 +28,29 @@ export function ContactSection() {
   }
 
   return (
-    <section className='bg-white pt-20 text-black'>
+    <section className='bg-white pt-20 text-black md:pt-24'>
       <div className='mx-auto max-w-6xl px-6'>
-        {/* Main Heading */}
-        <div className='mx-auto max-w-2xl text-center'>
-          <h2 className='font-serif text-2xl font-light uppercase tracking-[0.08em] text-[#222222] sm:text-3xl md:text-3xl'>
-            {' '}
-            {contactInfo.sectionHeading}{' '}
-          </h2>
-        </div>
-
-        {/* Content */}
+        <SectionHeading title={title} showDivider />
         <div className='mt-14 grid gap-12 md:grid-cols-2 md:gap-16'>
-          {/* Contact Form */}
           <div>
-            <h3 className='text-xl font-semibold text-black'>Send Message</h3>
+            <h3 className='font-serif text-2xl font-light uppercase tracking-[0.06em] text-[#222222]'>
+              Send Message
+            </h3>
 
-            <form onSubmit={handleSubmit} className='mt-6 space-y-5'>
+            <div className='mt-3 h-px w-10 bg-[#222222]' />
+
+            <form onSubmit={handleSubmit} className='mt-8 space-y-6'>
               {isSubmitted && (
-                <p className='rounded-md border border-black/10 bg-gray-100 px-4 py-3 text-sm text-black/70'>
+                <p className='border border-[#E5E2DD] bg-[#F7F5F0] px-4 py-3 text-sm text-[#55504B]'>
                   Thanks — your message has been sent.
                 </p>
               )}
 
-              {/* Name */}
               <div className='grid gap-2'>
-                <Label htmlFor='contact-name' className='text-black/70'>
+                <Label
+                  htmlFor='contact-name'
+                  className='text-[10px] font-medium uppercase tracking-[0.16em] text-[#66615C]'
+                >
                   Name
                 </Label>
 
@@ -53,13 +58,31 @@ export function ContactSection() {
                   id='contact-name'
                   value={form.name}
                   onChange={(event) => updateField('name', event.target.value)}
-                  className='h-11 border-gray-200 bg-gray-100 text-black placeholder:text-black/40 focus-visible:ring-black/20'
+                  className='
+                h-11
+                rounded-none
+                border-0
+                border-b
+                border-[#D8D5D0]
+                bg-transparent
+                px-0
+                text-sm
+                text-[#222222]
+                shadow-none
+                transition-all
+                duration-500
+                placeholder:text-[#99938C]
+                focus-visible:border-[#222222]
+                focus-visible:ring-0
+              '
                 />
               </div>
 
-              {/* Email */}
               <div className='grid gap-2'>
-                <Label htmlFor='contact-email' className='text-black/70'>
+                <Label
+                  htmlFor='contact-email'
+                  className='text-[10px] font-medium uppercase tracking-[0.16em] text-[#66615C]'
+                >
                   Email
                 </Label>
 
@@ -68,7 +91,23 @@ export function ContactSection() {
                   type='email'
                   value={form.email}
                   onChange={(event) => updateField('email', event.target.value)}
-                  className='h-11 border-gray-200 bg-gray-100 text-black placeholder:text-black/40 focus-visible:ring-black/20'
+                  className='
+                h-11
+                rounded-none
+                border-0
+                border-b
+                border-[#D8D5D0]
+                bg-transparent
+                px-0
+                text-sm
+                text-[#222222]
+                shadow-none
+                transition-all
+                duration-500
+                placeholder:text-[#99938C]
+                focus-visible:border-[#222222]
+                focus-visible:ring-0
+              '
                 />
 
                 {errors.email && (
@@ -78,9 +117,11 @@ export function ContactSection() {
                 )}
               </div>
 
-              {/* Message */}
               <div className='grid gap-2'>
-                <Label htmlFor='contact-message' className='text-black/70'>
+                <Label
+                  htmlFor='contact-message'
+                  className='text-[10px] font-medium uppercase tracking-[0.16em] text-[#66615C]'
+                >
                   Message
                 </Label>
 
@@ -91,7 +132,23 @@ export function ContactSection() {
                   onChange={(event) =>
                     updateField('message', event.target.value)
                   }
-                  className='resize-none border-gray-200 bg-gray-100 text-black placeholder:text-black/40 focus-visible:ring-black/20'
+                  className='
+                min-h-35
+                resize-none
+                rounded-none
+                border-0
+                border-b
+                border-[#D8D5D0]
+                bg-transparent
+                px-0
+                text-sm
+                text-[#222222]
+                shadow-none
+                transition-all
+                duration-500
+                focus-visible:border-[#222222]
+                focus-visible:ring-0
+              '
                 />
 
                 {errors.message && (
@@ -101,77 +158,109 @@ export function ContactSection() {
                 )}
               </div>
 
-              {/* Submit */}
               <div className='flex justify-center'>
                 <Button
                   type='submit'
                   disabled={isSubmitting}
-                  className='bg-gray-200 px-10 text-black hover:bg-gray-300'
+                  className='
+                group
+                relative
+                h-11
+                overflow-hidden
+                rounded-none
+                border
+                border-[#222222]
+                bg-[#222222]
+                px-10
+                text-[10px]
+                font-medium
+                uppercase
+                tracking-[0.2em]
+                text-white
+                transition-all
+                duration-500
+                hover:border-[#4A4540]
+                hover:bg-[#4A4540]
+              '
                 >
-                  {isSubmitting ? 'Sending…' : 'SEND'}
+                  <span className='relative z-10'>
+                    {isSubmitting ? 'Sending…' : 'SEND'}
+                  </span>
+
+                  <span
+                    className='
+                  pointer-events-none
+                  absolute
+                  inset-y-0
+                  -left-full
+                  w-1/2
+                  skew-x-[-20deg]
+                  bg-white/10
+                  transition-all
+                  duration-700
+                  ease-out
+                  group-hover:left-[120%]
+                '
+                  />
                 </Button>
               </div>
 
-              <p className='text-xs leading-5 text-black/40'>
+              <p className='text-xs leading-5 text-[#99938C]'>
                 This site is protected by reCAPTCHA and the Google Privacy
                 Policy and Terms of Service apply.
               </p>
             </form>
           </div>
 
-          {/* Call or Visit */}
           <div className='md:pl-8'>
-            <div className='border-l border-gray-200 pl-6'>
-              <p className='text-sm font-medium uppercase tracking-[0.2em] text-gray-400'>
+            <div className='border-l border-[#E5E2DD] pl-7'>
+              <p className='text-[10px] font-medium uppercase tracking-[0.2em] text-[#99938C]'>
                 Contact
               </p>
 
-              <div className='mt-8 space-y-7'>
-                {/* Business */}
+              <div className='mt-9 space-y-8'>
                 <div className='flex gap-4'>
-                  <div className='flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-100 text-black/60'>
+                  <div className='flex size-10 shrink-0 items-center justify-center border border-[#E5E2DD] bg-[#F7F5F0] text-[#66615C]'>
                     <MapPin className='size-5' />
                   </div>
 
                   <div>
-                    <h4 className='font-semibold text-black'>
+                    <h4 className='font-medium text-[#222222]'>
                       {contactInfo.businessName}
                     </h4>
 
-                    <p className='mt-1 text-sm leading-6 text-black/50'>
+                    <p className='mt-1 text-sm leading-6 text-[#66615C]'>
                       {contactInfo.address}
                     </p>
                   </div>
                 </div>
 
-                {/* Phone */}
                 <div className='flex gap-4'>
-                  <div className='flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-100 text-black/60'>
+                  <div className='flex size-10 shrink-0 items-center justify-center border border-[#E5E2DD] bg-[#F7F5F0] text-[#66615C]'>
                     <Phone className='size-5' />
                   </div>
 
                   <div>
-                    <h4 className='font-semibold text-black'>Phone</h4>
+                    <h4 className='font-medium text-[#222222]'>Phone</h4>
 
                     <a
                       href={contactInfo.phoneHref}
-                      className='mt-1 block text-sm text-black/50 underline-offset-4 transition-colors hover:text-black hover:underline'
+                      className='mt-1 block text-sm text-[#66615C] underline-offset-4 transition-colors hover:text-[#222222] hover:underline'
                     >
                       {contactInfo.phoneLabel}
                     </a>
                   </div>
                 </div>
 
-                {/* Office Hours */}
                 <div>
-                  <h4 className='font-semibold text-black'>Office Hours</h4>
+                  <h4 className='font-medium text-[#222222]'>Office Hours</h4>
 
-                  <p className='mt-2 text-sm text-black/50'>
+                  <p className='mt-2 text-sm text-[#66615C]'>
                     {contactInfo.officeHours.label} —{' '}
                     {contactInfo.officeHours.hours}
                   </p>
 
-                  <p className='mt-1 text-sm leading-6 text-black/40'>
+                  <p className='mt-1 text-sm leading-6 text-[#77716B]'>
                     {contactInfo.officeHours.note}
                   </p>
                 </div>
@@ -180,9 +269,7 @@ export function ContactSection() {
           </div>
         </div>
       </div>
-
-      {/* Map */}
-      <div className='relative mt-16 w-full overflow-hidden border-t border-gray-200'>
+      <div className='relative mt-16 w-full overflow-hidden border-t border-[#E5E2DD]'>
         <iframe
           src={contactInfo.mapEmbedUrl}
           width='100%'
@@ -199,9 +286,26 @@ export function ContactSection() {
           href={contactInfo.directionsHref}
           target='_blank'
           rel='noopener noreferrer'
-          className='absolute left-1.5 top-1.5 inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-md transition hover:bg-gray-100'
+          className='
+        absolute
+        left-4
+        top-4
+        inline-flex
+        items-center
+        gap-2
+        bg-white
+        px-4
+        py-2.5
+        text-sm
+        font-medium
+        text-[#222222]
+        shadow-lg
+        transition-all
+        duration-300
+        hover:bg-[#F7F5F0]
+      '
         >
-          <Navigation className='h-4 w-4' />
+          <Navigation className='size-4' />
           Get Directions
         </a>
       </div>

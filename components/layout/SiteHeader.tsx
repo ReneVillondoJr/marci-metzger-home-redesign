@@ -5,18 +5,13 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { useEffect } from 'react';
 
-import {
-  brandName,
-  logoImage,
-  navLinks,
-} from '@/modules/homepage/data/navigation';
+import { brandName, logoImage, navLinks } from '@/lib/navigation';
 
 import { useMobileNav } from '@/modules/homepage/hooks/use-mobile-nav';
 
 export function SiteHeader() {
   const { isOpen, open, close } = useMobileNav();
 
-  // Prevent the page behind the sidebar from scrolling
   useEffect(() => {
     if (!isOpen) return;
 
@@ -31,9 +26,7 @@ export function SiteHeader() {
 
   return (
     <header className='relative z-50 border-b bg-background/95 backdrop-blur'>
-      {/* Header */}{' '}
       <div className='relative mx-auto flex h-40 max-w-6xl items-center px-6'>
-        {/* Menu Button */}{' '}
         <button
           type='button'
           onClick={open}
@@ -52,7 +45,6 @@ export function SiteHeader() {
           {' '}
           <Menu className='size-6' />{' '}
         </button>
-        {/* Center Logo */}
         <Link
           href='/'
           className='absolute left-1/2 -translate-x-1/2'
@@ -63,12 +55,11 @@ export function SiteHeader() {
             alt={brandName}
             width={160}
             height={50}
-            className='h-30 w-auto object-contain'
+            className='h-25 w-auto object-contain'
             priority
           />
         </Link>
       </div>
-      {/* Overlay */}
       <div
         className={`
       fixed
@@ -87,7 +78,6 @@ export function SiteHeader() {
         onClick={close}
         aria-hidden='true'
       />
-      {/* Sidebar */}
       <aside
         className={`
       fixed
@@ -109,7 +99,6 @@ export function SiteHeader() {
     `}
         aria-hidden={!isOpen}
       >
-        {/* Sidebar Header */}
         <div className='flex h-20 shrink-0 items-center justify-between border-b px-6'>
           <span className='text-sm font-medium uppercase tracking-[0.2em] text-foreground/70'>
             Menu
@@ -134,7 +123,6 @@ export function SiteHeader() {
           </button>
         </div>
 
-        {/* Navigation */}
         <nav className='min-h-0 flex-1 overflow-y-auto px-6 py-6'>
           {navLinks.map((link, index) => (
             <Link

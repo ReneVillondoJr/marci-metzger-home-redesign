@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { SectionHeading } from '@/components/layout/SectionHeading';
 
 import { galleryHeading, galleryImages } from '@/modules/homepage/data/gallery';
 
@@ -53,22 +54,15 @@ export function PhotoGallerySection() {
 
   return (
     <section className='bg-[#111111] py-20 text-white md:py-24'>
-      {' '}
       <div className='mx-auto max-w-7xl px-5 sm:px-6 lg:px-8'>
-        {/* Section Heading */}
-        <div className='mb-10 text-center md:mb-12'>
-          <p className='mb-3 text-[10px] font-medium uppercase tracking-[0.3em] text-white/45'>
-            Gallery
-          </p>
+        <SectionHeading
+          title={galleryHeading}
+          eyebrow='Gallery'
+          tone='dark'
+          showDivider
+          className='mb-10 md:mb-12'
+        />
 
-          <h2 className='font-heading text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl'>
-            {galleryHeading}
-          </h2>
-
-          <div className='mx-auto mt-5 h-px w-14 bg-white/30' />
-        </div>
-
-        {/* Main Gallery */}
         <div className='group relative'>
           <Carousel
             setApi={setApi}
@@ -92,10 +86,8 @@ export function PhotoGallerySection() {
                       priority
                     />
 
-                    {/* Bottom gradient */}
                     <div className='pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/45 to-transparent' />
 
-                    {/* Image number */}
                     <div className='absolute bottom-4 left-4 sm:bottom-6 sm:left-6'>
                       <span className='text-[10px] font-medium uppercase tracking-[0.2em] text-white/70'>
                         {String(activeIndex + 1).padStart(2, '0')} /{' '}
@@ -107,7 +99,6 @@ export function PhotoGallerySection() {
               ))}
             </CarouselContent>
 
-            {/* Previous */}
             <CarouselPrevious
               className='
             left-3
@@ -133,7 +124,6 @@ export function PhotoGallerySection() {
               <ChevronLeft className='size-4 sm:size-5' />
             </CarouselPrevious>
 
-            {/* Next */}
             <CarouselNext
               className='
             right-3
@@ -161,7 +151,6 @@ export function PhotoGallerySection() {
           </Carousel>
         </div>
 
-        {/* Thumbnails */}
         <div className='mt-5'>
           <div
             className='
@@ -221,7 +210,6 @@ export function PhotoGallerySection() {
                 '
                   />
 
-                  {/* Thumbnail overlay */}
                   <span
                     className={`
                   absolute inset-0 transition-colors duration-500
@@ -233,7 +221,6 @@ export function PhotoGallerySection() {
                 `}
                   />
 
-                  {/* Active indicator */}
                   {isActive && (
                     <span className='absolute inset-x-0 bottom-0 h-0.5 bg-white' />
                   )}

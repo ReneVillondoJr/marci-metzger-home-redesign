@@ -4,7 +4,7 @@ import { FooterSocialLinks } from '@/modules/homepage/components/FooterSocialLin
 
 export function SiteFooter() {
   return (
-    <footer className='border-t bg-black py-10 text-white'>
+    <footer className='border-t bg-black py-10 text-white  md:py-25'>
       <div className='mx-auto max-w-6xl px-6 text-center'>
         <FooterSocialLinks />
 
