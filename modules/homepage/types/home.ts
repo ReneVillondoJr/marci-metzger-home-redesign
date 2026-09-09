@@ -34,7 +34,7 @@ export interface ServiceCard {
   image: string;
   imageAlt: string;
   heading: string;
-  subheading: string;
+  subheading?: string;
   body: string;
 }
 
@@ -46,7 +46,6 @@ export interface SelectOption {
 export interface MlsSearchFormConfig {
   sectionHeading: string;
   formTitle: string;
-  backgroundImage: string;
   sortOptions: SelectOption[];
   bedroomOptions: SelectOption[];
   bathroomOptions: SelectOption[];

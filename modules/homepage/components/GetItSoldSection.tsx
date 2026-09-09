@@ -1,16 +1,13 @@
 import Image from 'next/image';
 
+import { SectionHeading } from '@/components/layout/SectionHeading';
 import { getItSoldHeading, statCards } from '@/modules/homepage/data/about';
 
 export function GetItSoldSection() {
   return (
     <section className='bg-[#f6f3ef] py-20 lg:py-24'>
       <div className='mx-auto max-w-6xl px-6'>
-        <div className='mx-auto max-w-2xl text-center'>
-          <h2 className='mt-3 font-serif text-3xl font-light uppercase tracking-[0.08em] text-[#222222] sm:text-4xl'>
-            {getItSoldHeading}
-          </h2>
-        </div>
+        <SectionHeading title={getItSoldHeading} />
 
         <div className='mt-16 space-y-8 lg:space-y-12'>
           {statCards.map((card, index) => {
@@ -22,13 +19,17 @@ export function GetItSoldSection() {
                 className='overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-[0_24px_60px_-40px_rgba(0,0,0,0.3)]'
               >
                 <div className='grid items-center gap-0 lg:grid-cols-2'>
-                  <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'}>
+                  <div
+                    className={`group overflow-hidden ${
+                      imageFirst ? 'lg:order-1' : 'lg:order-2'
+                    }`}
+                  >
                     <Image
                       src={card.image}
                       alt={card.imageAlt}
                       width={900}
                       height={600}
-                      className='h-full w-full object-cover lg:min-h-[420px]'
+                      className='h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 lg:min-h-[420px]'
                     />
                   </div>
 

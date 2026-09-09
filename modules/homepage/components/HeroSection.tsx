@@ -7,7 +7,6 @@ import { heroData } from '@/modules/homepage/data/hero';
 export function HeroSection() {
   return (
     <section className='relative flex min-h-[90svh] items-end justify-center overflow-hidden text-center text-white'>
-      {/* Full Hero Image */}
       <div
         aria-hidden
         className='absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed'
@@ -16,16 +15,14 @@ export function HeroSection() {
         }}
       />
 
-      {/* Overlay */}
       <div aria-hidden className='absolute inset-0 bg-black/35' />
 
-      {/* Content */}
       <div className='relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center gap-6 px-6 pb-16 sm:pb-20 lg:pb-24'>
         <p className='text-lg font-medium uppercase tracking-[0.2em] text-white/90'>
           {heroData.eyebrow}
         </p>
 
-        <h1 className='text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl'>
+        <h1 className='font-serif text-4xl font-light uppercase leading-tight tracking-[0.08em] text-white sm:text-5xl lg:text-5xl'>
           {heroData.heading}
         </h1>
 
