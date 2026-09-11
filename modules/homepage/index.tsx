@@ -12,17 +12,15 @@ import { SocialLinksSection } from './components/SocialLinksSection';
 export function HomePage() {
   return (
     <>
-      <main>
-        <HeroSection />
-        <GetItSoldSection />
-        <AboutIntroSection />
-        <MlsSearchSection />
-        <PartnerLogosSection />
-        <PhotoGallerySection />
-        <ServicesSection />
-        <SocialLinksSection />
-        <ContactSection />
-      </main>
+      <HeroSection />
+      <GetItSoldSection />
+      <AboutIntroSection />
+      <MlsSearchSection />
+      <PartnerLogosSection />
+      <PhotoGallerySection />
+      <ServicesSection />
+      <SocialLinksSection />
+      <ContactSection />
 
       <CookieBanner />
     </>

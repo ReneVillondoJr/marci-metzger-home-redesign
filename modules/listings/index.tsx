@@ -3,9 +3,9 @@ import { FindYourHome } from './components/find-your-home';
 
 export default function Listings() {
   return (
-    <main>
+    <>
       <FindYourHome />
       <ThreeColumnGallery />
-    </main>
+    </>
   );
 }

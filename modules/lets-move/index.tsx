@@ -4,10 +4,10 @@ import { ThreeColumnGallery } from '@/modules/lets-move/components/threecolumnzo
 
 export default function LetMove() {
   return (
-    <main>
+    <>
       <ThreeColumnGallery />
       <MlsSearchSection />
       <ContactSection title='CONTACT US' />
-    </main>
+    </>
   );
 }
